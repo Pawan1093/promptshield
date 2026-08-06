@@ -1,13 +1,6 @@
 from fastapi import FastAPI
-from app.configuration.config import settings
+from app.routers.home import router as home_router
 
 app = FastAPI()
 
-@app.get("/")
-def home():
-    return {
-        "project":settings.APP_NAME,
-        "version":settings.APP_VERSION,
-        "debug":settings.DEBUG,
-        "status":"running application successfully"
-    }
+app.include_router(home_router)
