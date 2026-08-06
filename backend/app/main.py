@@ -1,10 +1,13 @@
 from fastapi import FastAPI
+from app.configuration.config import settings
 
 app = FastAPI()
 
 @app.get("/")
 def home():
     return {
-        "project":"promptshield",
+        "project":settings.APP_NAME,
+        "version":settings.APP_VERSION,
+        "debug":settings.DEBUG,
         "status":"running application successfully"
     }
